@@ -1,24 +1,62 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
+	{% load staticfiles %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lista de Empregados</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% static  'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" src="{% static  'css/style.css'%}" />
+<link rel="stylesheet" type="text/css" src="{% static  'css/bootstrap-datepicker.standalone.min.css' %}" />
+<link src="{% static  'css/common.css" type="text/css" rel="stylesheet'%}"/>
+
 </head>
 <body>
-
 <h2>Lista de Empregados</h2>
-<ul>
-    {% for employee in employees %}
+<br><br>
 
-    <a href="{%url 'update_employee' employee.id %}">
+			<div class="table-responsive">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-2">Name</th>
+						<th class="text-center col-md-2">Email</th>
+						<th class="text-center col-md-2">Department</th>
 
-        <li>{{employee.name}}</li>
-    </a>
-    {% endfor %}
-</ul>
-<a href="{% url 'create_employee' %}">Novo Empregado</a>
+						<th class="col-md-1"></th>
+					</tr>
+
+				</thead>
+				<tbody>
+                   {% for employee in employees %}
+					<tr>
+						<td >{{employee.name}}</td>
+						<td >{{employee.email}}</td>
+						<td >{{employee.department}}</td>
+
+						<td class="text-center">
+
+							<a class="btn btn-libk btn-xs"
+							href="{%url 'update_employee' employee.id %}" title="Editar" rel="tooltip" data-placement="top"><span
+								class="glyphicon glyphicon-pencil"></span></a>
+
+							<a class="btn btn-link btn-xs" data-toggle="modal"
+							href="{% url 'delete_employee' employee.id %}" title="Excluir" rel="tooltip" data-placement="top">
+							  <span class="glyphicon glyphicon-remove"> </span></a>
+
+					 </td>
+					</tr>
+					 {% endfor %}
+
+					</tbody>
+				</table>
+                <br><br>
+                <h4><a href="{% url 'create_employee' %}">Novo Empregado</a></h4>
+			</div>
+
 </body>
 </html>
