@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atualização de Empregado</title>
+</head>
+<body>
+<h1>Atualização de Empregado</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <br><br>
+    <button type="submit">Confirmar</button>
+</form>
+<br><br>
+{% if employee %}
+<a href="{% url 'delete_employee' employee.id %}">Remover Empregado</a>
+{% endif %}
+
+</body>
+</html>
