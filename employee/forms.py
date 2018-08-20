@@ -7,7 +7,6 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields = ['name', 'email', 'department']
 
-
     email = forms.EmailField(
         max_length=100,
         widget=forms.EmailInput(attrs={'style': 'border-color: green;width: 705px;'}),

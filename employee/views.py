@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Employee
 from .forms import EmployeeForm
 
+
 def list_employee(request):
     employee = Employee.objects.all()
     return render(request, 'employee.html', {'employees': employee})
@@ -33,6 +34,3 @@ def delete_employee(request, id):
         employee.delete()
         return redirect('list_employee')
     return render(request, 'employee-delete-confirm.html', {'employee': employee})
-
-
-

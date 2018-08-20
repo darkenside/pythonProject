@@ -2,11 +2,8 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-
 from employee.sets import EmployeeViewSet
 from rest_framework import routers
-
-
 
 router = routers.DefaultRouter()
 router.register(r'employee',EmployeeViewSet)
